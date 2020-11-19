@@ -34,7 +34,7 @@ from collections import Counter
 import numpy as np
 
 
-def fleiss_kappa(M):
+def fleiss_kappa(M : np.array) -> float:
     """
     Compute the agreement between `r` rater of `N` subjects (e.g., papers)
     in `k` categories (e.g., criterias). For example, we have 6 students voting
@@ -72,7 +72,7 @@ def fleiss_kappa(M):
     return kappa
 
 
-def convert_list_to_M(list_votes, criteria=['A', '1', '2', '3', '4', '5', '6']):
+def convert_list_to_M(list_votes : list, criteria=['A', '1', '2', '3', '4', '5', '6']) -> np.array:
     """Convert a list of (papers x raters) votes from the CSV file into the 
     `M` matrix containing (papers x subjects) categories.
 
@@ -98,7 +98,7 @@ def convert_list_to_M(list_votes, criteria=['A', '1', '2', '3', '4', '5', '6']):
     return np.array(M)
 
 
-def convert_list_to_binary_M(list_votes, criteria=['A', '0']):
+def convert_list_to_binary_M(list_votes : list, criteria=['A', '0']) -> np.array:
     """Convert a list of (papers x raters) votes from the CSV file into the 
     `M` matrix containing (papers x subjects) categories.
 
@@ -126,7 +126,7 @@ def convert_list_to_binary_M(list_votes, criteria=['A', '0']):
     return np.array(M)
 
 
-def compute_fleiss_kappa(csv_file, binary=False):
+def compute_fleiss_kappa(csv_file : str, binary=False) -> None:
     """Entire pipeline of Fleiss Kappa for a CSV file.
 
     Parameters:
